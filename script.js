@@ -22,6 +22,7 @@ function calculateCount(){
 calculateCount();
 
 // Filter button toggle
+
 function toggleStyle(id){
     allBtn.classList.remove('bg-black','text-white');
     allInterviewBtn.classList.remove('bg-black','text-white');
@@ -50,6 +51,7 @@ function toggleStyle(id){
 }
 
 // Move card function
+
 function moveCard(card, fromList, toList, status){
     const mobile = card.querySelector('.mobile').innerText;
     const react = card.querySelector('.react').innerText;
@@ -57,6 +59,7 @@ function moveCard(card, fromList, toList, status){
     const water = card.querySelector('.water').innerText;
 
     // Remove from old list
+
     if(fromList === 'cards'){
         cardSection.removeChild(card);
     } else if(fromList === 'interview'){
@@ -66,6 +69,7 @@ function moveCard(card, fromList, toList, status){
     }
 
     // Add to new list
+
     const obj = {mobile, react, light, water, status};
     if(toList === 'interview'){
         interview.push(obj);
@@ -79,12 +83,15 @@ function moveCard(card, fromList, toList, status){
 }
 
 // Main click listener
+
 mainContainer.addEventListener('click', function(event){
     const card = event.target.closest('.card');
     if(!card) return;
 
     if(event.target.classList.contains('interview-btn')){
+
         // Determine current list
+
         if(cardSection.contains(card)){
             moveCard(card, 'cards', 'interview', 'Interview');
         } else if(filterSection.contains(card)){
@@ -99,7 +106,8 @@ mainContainer.addEventListener('click', function(event){
     }
 });
 
-// Render interview cards
+// Render interview card
+
 function renderInterview(){
     filterSection.innerHTML = '';
     interview.forEach(item => {
